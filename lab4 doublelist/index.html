@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>สำนักบริหารและพัฒนาวิชาการ</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+        }
+        h4,
+        h1 {
+            font-size: 26px;
+            font-weight: 600;
+            color: black;
+            text-rendering: optimizelegibility;
+            -moz-osx-font-smoothing: grayscale;
+            -moz-text-size-adjust: none;
+        }
+        table {
+            background: #ffffff;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td,
+        th {
+            border: 2px solid #000000;
+            text-align: center;
+            padding: 8px;
+        }
+        body {
+            background-image: url(game/bg.png);
+            background-position: center top;
+            background-size: 75% auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="lab3" style="text-align: center">
+        <main role="main" class="container">
+            <div style="text-align: left">
+                <br>
+                <h1>หลักสูตรที่เปิดสอน</h1>
+            </div>
+            <hr>
+
+            <h5>เลือกคณะ / Faculty
+                <select v-model="selected">
+                    <option>วิทยาลัยบริหารศาสตร์</option>
+                    <option>วิทยาลัยพลังงานทดแทน</option>
+                    <option>สารสนเทศและการสื่อสาร</option>
+                </select></h5>
+            <hr>
+            <div v-if="select === '---------กรุณาเลือก---------'">
+
+            </div>
+            <div v-if="selected === 'วิทยาลัยบริหารศาสตร์'">
+                <table>
+                    <tr>
+                        <th>รหัสหลักสูตร</th>
+                        <th>รายชื่อหลักสูตร</th>
+                        <th>หลักสูตร(ปี)</th>
+                    </tr>
+                    <tr>
+                    <tr v-for="F1 in F1">
+                        <td>
+                            {{F1.id}}
+                        </td>
+                        <td>
+                            {{F1.name}}
+                            <p style="font-size: 10px; color: #b87c7c">{{F1.en}}</p>
+                        </td>
+                        <td>
+                            {{F1.year}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div v-if="selected === 'วิทยาลัยพลังงานทดแทน'">
+                <table>
+                    <tr>
+                        <th>รหัสหลักสูตร</th>
+                        <th>รายชื่อหลักสูตร</th>
+                        <th>หลักสูตร(ปี)</th>
+                    </tr>
+                    <tr>
+                    <tr v-for="F2 in F2">
+                        <td>
+                            {{F2.id}}
+                        </td>
+                        <td>
+                            {{F2.name}}
+                            <p style="font-size: 10px; color: #b87c7c">{{F2.en}}</p>
+                        </td>
+                        <td>
+                            {{F2.year}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div v-if="selected === 'สารสนเทศและการสื่อสาร'">
+                <table>
+                    <tr>
+                        <th>รหัสหลักสูตร</th>
+                        <th>รายชื่อหลักสูตร</th>
+                        <th>หลักสูตร(ปี)</th>
+                    </tr>
+                    <tr>
+                    <tr v-for="F3 in F3">
+                        <td>
+                            {{F3.id}}
+                        </td>
+                        <td>
+                            {{F3.name}}
+                            <p style="font-size: 10px; color: #b87c7c">{{F3.en}}</p>
+                        </td>
+                        <td>
+                            {{F3.year}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+    </div>
+    </main>
+    </div>
+
+</body>
+
+</html>
+<script>
+    var lab3 = new Vue({
+        el: '#lab3',
+        data: {
+            selected: '',
+            F1: [{
+                id: 60305040,
+                name: "รัฐประศาสนศาสตร์",
+                en: "Public Administration",
+                year: 4
+            }, {
+                id: 56305010,
+                name: "รัฐศาสตร์",
+                en: "Political Science",
+                year: 4
+            }, {
+                id: 56305030,
+                name: "การบริหารท้องถิ่น",
+                en: "Local Administration",
+                year: 4
+            }],
+            F2: [{
+                id: 61115030,
+                name: "วิศวกรรมการอนุรักษ์พลังงาน",
+                en: "Energy Conservation Engineering",
+                year: 2
+            }, {
+                id: 61315010,
+                name: "พลังงานทดแทน",
+                en: "Renewable Energy",
+                year: 4
+            }, {
+                id: 56315010,
+                name: "พลังงานทดแทน",
+                en: "Bachelor of Science Program in Renewable Energy",
+                year: 4
+            }, {
+                id: 521184,
+                name: "พลังงานทดแทน",
+                en: "Bachelor of Science Program in Renewable Energy",
+                year: 4
+            }],
+            F3: [{
+                id: 56318010,
+                name: "การสื่อสารดิจิทัล",
+                en: "Bachelor of Arts Program in Digital Communication",
+                year: 4
+            }, {
+                id: 521224,
+                name: "การสื่อสารดิจิทัล",
+                en: "Bachelor of Arts Program in Digital Communication",
+                year: 4
+            }]
+        },
+    })
+</script>
